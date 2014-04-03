@@ -1,4 +1,5 @@
-var escolaApp = angular.module('escolaApp', []);//'ngRoute', 'firebase']);
+var escolaApp = angular.module('escolaApp', ['ngRoute', 'firebase',
+                                             'ui.bootstrap']);
 
 escolaApp.config(function($routeProvider) {
   'use strict';
@@ -6,11 +7,11 @@ escolaApp.config(function($routeProvider) {
   $routeProvider
     .when('/professor',{
       controller: 'professorCtrl',
-      templateUrl: '../views/calendar-view.html'
+      templateUrl: 'views/professor.html'
     })
     .when('/aluno',{
       controller: 'alunoCtrl',
-      templateUrl: '../views/add-view.html'
+      templateUrl: 'views/aluno.html'
     })
     .otherwise({'redirectTo': '/professor'});
 });

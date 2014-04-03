@@ -1,0 +1,49 @@
+<h2>Girafales</h2>
+<div class="btn-group">
+  <button type="button" class="btn btn-default" ng-class="{active: turmaSelecionada == undefined}" ng-click="turmaSelecionada = undefined">Todos</button>
+  <button type="button" class="btn btn-default" ng-class="{active: turmaSelecionada == '7o ano'}" ng-click="turmaSelecionada = '7o ano'">7o ano</button>
+  <button type="button" class="btn btn-default" ng-class="{active: turmaSelecionada == '8o ano'}" ng-click="turmaSelecionada = '8o ano'">8o ano</button>
+  <button type="button" class="btn btn-default" ng-class="{active: turmaSelecionada == '9o ano A'}" ng-click="turmaSelecionada = '9o ano A'">9o ano A</button>
+  <button type="button" class="btn btn-default" ng-class="{active: turmaSelecionada == '9o ano B'}" ng-click="turmaSelecionada = '9o ano B'">9o ano B</button>
+</div>
+
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th ng-click="toggleOrder('data')">Data</th>
+      <th ng-click="toggleOrder('tipo')">Tipo</th>
+      <th ng-click="toggleOrder('turma')">Turma</th>
+      <th>Descrição</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr ng-repeat="tarefa in tarefas | toArray | filter: {turma: turmaSelecionada} | orderBy: ordenacao"  ng-click="$parent.isCollapsed = !$parent.isCollapsed">
+      <td >{{ tarefa.data }}</td>
+      <td>{{ tarefa.tipo }}</td>
+      <td>{{ tarefa.turma }}</td>
+      <td>{{ tarefa.descricao }}</td>
+    </tr>
+    <tr>
+    	<td colspan="4" collapse="isCollapsed">oi</td>
+    </tr>
+  </tbody>
+
+</table>
+
+<form action="" class="form-inline">
+  <input class="form-control" type="text" placeholder="Data" ng-model="novaTarefa.data"/>
+  <select class="form-control" ng-model="novaTarefa.tipo">
+  	<option value="Para Casa">Para Casa</option>
+  	<option value="Trabalho">Trabalho</option>
+  	<option value="Prova">Prova</option>
+  </select>
+  <select class="form-control" ng-model="novaTarefa.turma">
+  	<option value="7o ano">7o ano</option>
+  	<option value="8o ano">8o ano</option>
+  	<option value="9o ano A">9o ano A</option>
+  	<option value="9o ano B">9o ano B</option>
+  </select>
+  <input type="text" class="form-control" placeholder="Descrição" ng-model="novaTarefa.descricao"/>
+  <button class="btn btn-default" ng-click="cadastrarTarefa(novaTarefa)">Salvar</button>
+</form>

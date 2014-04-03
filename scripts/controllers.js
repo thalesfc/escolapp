@@ -1,7 +1,21 @@
-escolaApp.controller('professorCtrl', function ($scope, Professor) {
+escolaApp.controller('professorCtrl', function ($scope, Professor, Tarefas) {
   'use strict';
 
-  alert('oi');
+  $scope.tarefas = Tarefas;
+  $scope.filtro = {};
+  $scope.isCollapsed = true;
+
+  $scope.cadastrarTarefa = function (tarefa) {
+    Tarefas.$add(tarefa);
+    tarefa = {};
+  };
+
+  $scope.toggleOrder = function (orderBy) {
+    $scope.ordenacao = (orderBy == $scope.ordenacao) ? '-' + orderBy : orderBy;
+  };
+
+  //Tarefas.$add({data: '23/01/2014', tipo: 'Para casa', turma: '8o ano', descricao: 'Para casa de trigonometria'});
+
 //  // Initialize vars.
 //  $scope.clients = [];
 //  $scope.projects = [];
