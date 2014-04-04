@@ -4,7 +4,17 @@ escolaApp.factory('Professor' , ['$firebase', function ($firebase) {
   var _url = 'https://blistering-fire-4654.firebaseio.com/professor',
       _ref = new Firebase(_url);
 
-  return $firebase(_ref);
+  return {
+    all: function() {
+      return $firebase(_ref);
+    },
+
+    save: function(id, obj) {
+      var itemRef = new Firebase(_ref + '/' + id);
+
+      itemRef.update(obj);
+    }
+  };
 }]);
 
 escolaApp.factory('Tarefas' , ['$firebase', function ($firebase) {
@@ -13,7 +23,26 @@ escolaApp.factory('Tarefas' , ['$firebase', function ($firebase) {
   var _url = 'https://blistering-fire-4654.firebaseio.com/tarefas',
       _ref = new Firebase(_url);
 
-  return $firebase(_ref);
+  return {
+    all: function() {
+      return $firebase(_ref);
+    },
+
+    save: function(id, obj) {
+      var itemRef = new Firebase(_ref + '/' + id);
+
+      obj = angular.copy(obj);
+      delete obj.id;
+
+      itemRef.update(obj);
+    },
+
+    remove: function(id) {
+      var itemRef = new Firebase(_ref + '/' + id);
+
+      itemRef.remove();
+    }
+  };
 }]);
 
 escolaApp.factory('Aluno' , ['angularFire', function (angularFire) {

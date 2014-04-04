@@ -17,7 +17,7 @@
     </tr>
   </thead>
 
-  <tbody ng-repeat="tarefa in tarefas | toArray | filter: {turma: turmaSelecionada} | orderBy: ordenacao">
+  <tbody ng-repeat="(id, tarefa) in tarefas | toArray | filter: {turma: turmaSelecionada} | orderBy: ordenacao">
     <tr ng-click="isOpened = !isOpened">
       <td >{{ tarefa.data }}</td>
       <td>{{ tarefa.tipo }}</td>
@@ -27,11 +27,14 @@
     <tr>
       <td colspan="4" ng-show="isOpened">
         <form action="" class="form-inline">
-          Aluno 01
-          <input type="radio" name="aluno" value="true" /> Entregou
-          <input type="radio" name="aluno" value="false" /> Não entregou
+          <div ng-repeat="execucao in tarefa.execucoes">
+            {{ execucao.aluno }}
+            <input type="radio" ng-model="execucao.entregou" value="true"  /> Entregou
+            <input type="radio" ng-model="execucao.entregou" value="false" /> Não entregou
 
-          Nota <input type="text" />
+            Nota <input type="text" ng-model="execucao.nota" />
+          </div>
+          <button ng-click="atualizarTarefa(tarefa.id)">Save</button>
         </form>
       </td>
     </tr>

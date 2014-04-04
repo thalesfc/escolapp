@@ -6,6 +6,8 @@ escolaApp.filter('toArray', function () {
 
     for (var key in obj) {
       if (key[0] != '$') {
+        obj[key].id = key;
+
         array.push(obj[key]);
       }
     }
