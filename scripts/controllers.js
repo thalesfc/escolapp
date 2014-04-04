@@ -3,7 +3,6 @@ escolaApp.controller('professorCtrl', function ($scope, Professor, Tarefas) {
 
   $scope.tarefas = Tarefas;
   $scope.filtro = {};
-  $scope.isCollapsed = true;
 
   $scope.cadastrarTarefa = function (tarefa) {
     Tarefas.$add(tarefa);

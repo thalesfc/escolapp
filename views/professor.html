@@ -18,14 +18,14 @@
   </thead>
 
   <tbody ng-repeat="tarefa in tarefas | toArray | filter: {turma: turmaSelecionada} | orderBy: ordenacao">
-    <tr ng-click="isCollapsed = !isCollapsed">
+    <tr ng-click="isOpened = !isOpened">
       <td >{{ tarefa.data }}</td>
       <td>{{ tarefa.tipo }}</td>
       <td>{{ tarefa.turma }}</td>
       <td>{{ tarefa.descricao }}</td>
     </tr>
     <tr>
-      <td colspan="4" collapse="isCollapsed" style="padding: 0 !important;">
+      <td colspan="4" ng-show="isOpened">
         <form action="" class="form-inline">
           Aluno 01
           <input type="radio" name="aluno" value="true" /> Entregou
