@@ -10,6 +10,11 @@ body {
   padding: 20px;
 }
 
+.dashed {
+  color: red;
+  text-decoration: line-through;
+}
+
 .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
   background-color: #d9edf7;
 }
@@ -17,3 +22,4 @@ body {
 .table-striped > tbody:nth-child(odd) > tr > td {
   background: #fff;
 }
+

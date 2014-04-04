@@ -6,10 +6,26 @@ escolaApp.controller('professorCtrl', function ($scope, Professor, Tarefas) {
 
   $scope.cadastrarTarefa = function (tarefa) {
     tarefa.execucoes = [{
-      aluno: 'Pedro',
-      entregou: false,
+      aluno: 'Adriana',
+      entregou: true,
       nota: ''
-    }];
+    },
+    {
+      aluno: 'Mariana',
+      entregou: true,
+      nota: ''
+    },
+    {
+      aluno: 'Pedro',
+      entregou: true,
+      nota: ''
+    },
+    {
+      aluno: 'Rafael',
+      entregou: true,
+      nota: ''
+    }
+];
     $scope.tarefas.$add(tarefa);
     tarefa = {};
   };
